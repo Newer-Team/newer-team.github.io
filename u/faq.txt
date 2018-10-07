@@ -1,0 +1,24 @@
+[18:25:25] <skawo> Add number 6
+[18:25:44] <skawo> "...Wooly hats?"
+[18:25:47] <skawo> "Wooly hats."
+[18:25:57] <RoadrunnerWMC> This is the Newer Wii FAQ
+[18:26:03] <RoadrunnerWMC> That can go on the Newer U one
+[18:26:05] <skawo> eh
+[18:26:07] <skawo> k
+[18:26:20] <RoadrunnerWMC> Remind me to do that when I actually make it.
+[18:26:43] <skawo> I will definitely forget
+[18:26:47] <skawo> So sure
+
+
+[18:30:51] <skawo> When you make the U one
+[18:30:52] <MrRean> lol
+[18:30:54] <skawo> add a queston
+[18:31:11] <skawo> "Are you going to make Newererest or Newer 4?"
+[18:31:11] <RoadrunnerWMC> Meorge: what are the four boxes below the line there?
+[18:31:17] <skawo> And in response
+[18:31:20] <skawo> "Glare"
+[18:31:28] <RoadrunnerWMC> OK :P
+
+[18:31:46] <MrRean> add a question but comment it out
+[18:31:57] <MrRean> <!-- is this a question, even if it's hidden? -->
+[18:32:02] <MrRean> <!-- sure -->

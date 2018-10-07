@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		
+		<title>Index Page</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="style/styles.css"  />
+		<link rel="stylesheet" type="text/css" media="screen" href="style/red.css" />
+	</head>
+	
+<body>
+<div id="container"><!-- Start container -->
+
+	<div class="top">&nbsp;</div>
+	
+    <div id="pageHeader"><!-- Start page header -->
+        <h1>Koopatlas Help Documentation</h1>
+        <h2>The Newer World Map Engine Editor for NSMBWii</h2>
+    </div><!-- End page header -->
+
+    <div id="navcontainer"><!-- Start Navigation -->
+        <ul>
+            <li><a href="index.html" rel="self" id="current">Index</a></li>
+            <li><a href="start.html" rel="self">Getting Started</a></li>
+            <li><a href="editor.html" rel="self">Editor Window</a></li>
+            <li><a href="exporting.html" rel="self">Exporting</a></li>
+            <li><a href="layers.html" rel="self">Layers</a></li>
+            <li><a href="node.html" rel="self">Nodes</a></li>
+            <li><a href="path.html" rel="self">Paths</a></li>
+            <li><a href="tile.html" rel="self">Tiles</a></li>
+            <li><a href="doodad.html" rel="self">Doodads</a></li>
+            <li><a href="koopuzzle.html" rel="self">Koopuzzle</a></li>
+        </ul>
+    </div><!-- End navigation -->
+	
+	<div id="contentContainer"><!-- Start main content wrapper -->
+		<div id="content"><!-- Start content -->
+
+            <h1><b>Nodes</b></h1>
+                <p>To draw a node, select the path layer in the layer palette and right click on the canvas.</p>
+                <p><br></p>
+            
+            <h2><b>Node Type</b></h2>
+                <p>You can change the type of node by clicking the little icon to the upper right of the node, when the node is selected. There are four node types.</p>
+                <ul>
+                <li>Movement Node - The icon will be a 'fast forward' sign in blue. If the node is large and red, Mario will simply stop when he arrives at the node. If the node is small and white, Mario will walk right through the node. This is determined automatically, so that Mario stops at crossings and endpoints.</li>
+                <li>Level Node - the icon will be a 'play' icon in green. The node itself will look like a level. When selected, there will be a checkbox and two spinners below the node. The checkbox notifies whether the level has a secret exit or not. The spinners determine the level slot. The first spinner is world, the second is level. So if your spinners are set to 1 and 10, the node will load level 01-10.arc.</li>
+                <li>Exit Type - the icon will be an arrow pointing outward in white. The node itself will look like a level, but with a number. These nodes will take the player to a new kpmap when stepped on. When selected, three items will appear below the node. The drop down menu is the transition effect, the number is the destination exit node on the destination map, and the text box is the full filename of the destination map.</li>
+                <li>Transition Marker - The last type looks like a little screen with dashed lines. This node marks when an exit transition begins, and should be placed slightly before each exit node for smooth animations. The number below the node when selected matches the exit node it attaches to. If you omit this node, Mario will walk in place on the exit node for a short time while the transition starts, which looks slightly weird.</li>
+                </ul>
+                <p><br></p>
+                <p></p>
+            
+            <p><a href="index.html">Back</a></p>
+ 
+			<div class="clearer"></div>
+
+		</div><!-- End content -->
+	</div><!-- End main content wrapper -->
+	
+   <div class="clearer"></div>
+   
+        <div id="footer"><!-- Start Footer -->
+        	<p>&copy; 2009 Treeki, Tempus, etc...</p>
+        </div><!-- End Footer -->
+        
+   <div class="bottom">&nbsp;</div>
+   
+</div><!-- End container -->
+</body>
+</html>

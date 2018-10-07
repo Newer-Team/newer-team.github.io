@@ -1,0 +1,109 @@
+@charset "utf-8";
+body { background:#cdcdcd; color:#333; line-height:1.4;}
+body, #wrapper { max-width: 2504px;}
+body, pre code, input[type=text],textarea { font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;}
+input {padding: 6px; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; color: #999; font-style:italic; width:240px;font-size:1.1em;}
+a { text-decoration: none; }
+a:focus { outline:0;}
+code { padding:0;}
+.a-left { text-align:left!important;}
+.a-right { text-align:right!important;}
+.a-center { text-align:center!important;}
+.left { float:left!important;}
+.right { float:right!important;}
+h1, h2, h4 { text-transform: uppercase;}
+#intro {padding: 40px 20px 0px;color: #666;font-size:14px;font-family: verdana, arial, serif; line-height: 28px;margin-bottom:0;}
+#wrapper { background: #fff/* url(../images/bg-gradient.png) repeat-x left bottom;*/}
+#header { height:60px; padding-top:15px;}
+#header p { color:#808080; font-size:14px; font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif; font-style:italic; margin-bottom:0; }
+* + html #header p { margin-top: -5px;}
+#header #logo  { font-weight: normal; color:#4a4a4a; font-size:30px; line-height: 1; margin-bottom:0px;}
+#header #logo a { color:#4a4a4a;}
+#header #logo a strong { color:#797979;}
+#banner { color:#fff; /*height: 600px;*/height: 360px;}
+#container { /*border-top: double 3px #eaeaea; */position:relative;  }
+#container > div { padding:45px 0; background-color:#fff!important;}
+#container.col2-layout > div { min-height:360px;/*background: url(../images/line.png) repeat-y center top;*/}
+#watch-the-video { padding-right:10px;}
+#mailtoad, #toad {display:block;float:left;margin-top:40px;}
+#toad {width: 112px;}
+#mailtoad {width: 558px;padding-left:20px}
+#mailtoad p {margin-bottom:20px}
+#mailtoad #submitbtn {width:auto;font-style:normal; color: #555}
+#features { padding-left: 10px;}
+#features h3, #mailtoad h3 { margin-bottom:5px; font-size:20px; line-height:1;}
+#features ul, #features li:last-child p:last-child, #compare-value table { margin-bottom:0;}
+#features .prefix_1 { padding-left:70px; }
+#gallery h2 {padding-left:20px;}
+#gallery img {border: 1px solid #e5e5e5; width: 208px; padding: 5px;}
+.gall2 img {width:128px;margin-left:10px;padding:5px; border: 1px solid #e5e5e5}
+#gallery .grid_3 {margin: 0 0 0 20px;}
+#seealso {width: 240px;float:left;display:block;margin-top:40px;}
+#seealso h3 {padding-left:10px;}
+#seealso ul {margin: -28px 0px 0;  width: 260px; padding:0 0 0 10px;float:left;display:block;list-style-type:none}
+#seealso ul li {border-bottom: 1px dashed #e5e5e5}
+#seealso ul a:link, #seealso ul a:visited {font-family: verdana, arial, serif; font-size:12px; display:block; padding: 5px 0 5px 10px; color: #333333}
+#seealso ul a:hover {color: #900000}
+#boxes h4 { font-size:22px; line-height:1; margin-top:30px; padding-left:10px}
+#watch-the-video h2, #features h2, #mailtoad h2, #gallery h2, #seealso h3 { font-size:30px; line-height:1;}
+#boxes h4 + p, #watch-the-video h2 + p, #features h2 + p, #mailtoad h2 + p, #gallery h2 + p, #seealso h3 + p { font-family:  "Palatino Linotype", "Book Antiqua", Palatino, serif; font-size:18px; color:#646464; margin-top:-25px;}
+#watch-the-video p span, #features p span, #mailtoad p span, #boxes p span { color:#aaa;}
+#video-frame { background-color:#ccc; border: solid 2px #d5e6e6;}
+.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
+.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
+.button { overflow:visible; width:auto; border:0; padding:0; margin:0; background: none; }
+.button, .button span { display: inline-block; white-space: nowrap; cursor: pointer; color:#fff; text-transform: uppercase; font-size:36px; }
+.button > span { padding: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.5); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);}
+.button > span > span { border: solid 1px rgba(255,255,255, 0.15); background: url(../images/graphic-button.png) repeat-x left top; line-height:64px; height:65px; padding:0 70px;}
+.button:hover > span > span { border: solid 1px rgba(255,255,255,0.5);}
+.button:active > span > span { line-height: 66px;}
+.button:focus { outline:0;}
+.icon-frame {  width:48px; height:50px; padding:0px 10px 10px; display: inline-block; background-repeat: no-repeat;}
+
+#newsletter {padding: 0px; margin: 0px;height: 270px;overflow:hidden;}
+#newsletter-container {padding: 0px; margin: 0px auto;height: 262px;width:960px;}
+#copyright {padding: 5px 0; margin: 0px auto;width:940px;font-size:0.7em;font-family:verdana, arial, serif}
+#legality { font-size:12px; color:#8b8b8b; padding-top: 6px;}
+
+.darkred .button > span, .button.darkred > span { background-color:#832f2f;}
+.darkred #header-container { background: url(../images/mariobanner6.jpg) repeat-x center top; }
+/*.darkred .icon-frame { background-image:url(../images/bg-icon-darkred.png);}*/
+.darkred #call-to-action,#call-to-action.darkred { background: url(../images/bg-button-darkred.png) no-repeat center bottom;}
+.darkred a, .darkred #container h2, #mailtoad h2, .darkred #container h3, #boxes h4, #gallery h2, #seealso h3 { color:#900000;}
+
+
+/* `Icons
+----------------------------------------------------------------------------------------------------*/
+.icon { width:48px; height:50px; font-size:0; padding-top:0px; display: inline-block; vertical-align:text-top;  background-repeat: no-repeat; background-position: center top; }
+/*#features .icon { border-radius: 20px; -moz-border-radius:20px; -webkit-border-radius:20px;}*/
+
+.icon.attach{ background-image: url(../images/star.png);  }
+.icon.battery_75_percent{ background-image: url(../images/star.png);  }
+.icon.settings_gears{ background-image: url(../images/star.png);  }
+
+/* Slider Footer */
+.theend {position:relative;}
+
+#stage {
+    top: 0px;
+    left: 0px;
+/*  z-index: 100;*/
+}
+.stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 900px;
+    height: 359px;
+    overflow: hidden;
+}
+#bg {
+    background: #aedfe5 url(../images/sky1.png) 0 0 repeat-x;
+}
+#clouds {
+    background: transparent url(../images/cloud2.png) 305px 0px repeat-x;
+}
+#hill1 {
+    background: transparent url(../images/bg1.png) 0 0px repeat-x;
+}

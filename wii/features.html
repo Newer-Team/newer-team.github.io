@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Features - Newer Super Mario Bros. Wii</title>
+	<meta name="description" content="Learn all about the world of Newer.">
+	<meta name="viewport" content="width=980, user-scalable=yes">
+	<link rel="icon" type="image/png" href="favicon.png">
+
+	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../css/normalize.min.css">
+	<link rel="stylesheet" href="../css/960.css">
+	<link rel="stylesheet" href="../css/newerwii.css">
+
+	<script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="../js/iscroll.js"></script>
+	<script type='text/javascript'>
+	document.write("<style type='text/css'>.worldExplorer { display: none; }</style>");
+	var scroll1, scroll2, scroll3;
+	var activePopup = null;
+	var activeExplorer = null;
+	function addScrolls() {
+		setTimeout(function() {
+			options = {
+				hScroll: true, vScroll: true,
+				hScrollbar: false, vScrollbar: false,
+				bounce: false,
+				wheelAction: 'none',
+				lockDirection: false};
+				scroll1 = new iScroll('explorerMapScroller1', options);
+				scroll2 = new iScroll('explorerMapScroller2', options);
+				scroll3 = new iScroll('explorerMapScroller3', options);
+			}, 100);
+
+		function enablePopup() {
+			disablePopup(null);
+			this.className = 'explorerPopupArrow visibleAnyway';
+			this.nextSibling.className='explorerPopupWindow visibleAnyway';
+			activePopup = this;
+			return false;
+		}
+		function disablePopup(event) {
+			if (activePopup != null) {
+				if (event != null && event.defaultPrevented == true)
+					return;
+				activePopup.className = 'explorerPopupArrow';
+				activePopup.nextSibling.className='explorerPopupWindow';
+				activePopup = null;
+			}
+		}
+		function enableClicked() {
+			this.className = 'clicked';
+		}
+		function disableClicked() {
+			this.className = '';
+		}
+		function nukeWheel(event) {
+			event.preventDefault();
+			return false;
+		}
+		function showTeaser() {
+			// THIS IS TERRIBLE
+			var whichOne = this.id.substring(15,16);
+			var correspondingExplorer = document.getElementById('explorer'+whichOne);
+
+			if (correspondingExplorer == activeExplorer) {
+				activeExplorer.style.display = 'none';
+				activeExplorer = null;
+				return false;
+			}
+			if (activeExplorer != null) {
+				activeExplorer.style.display = 'none';
+			}
+			activeExplorer = correspondingExplorer;
+			activeExplorer.style.display = 'block';
+			switch (whichOne) {
+				case '1': scroll1._resize(); break;
+				case '2': scroll2._resize(); break;
+				case '3': scroll3._resize(); break;
+			}
+			return false;
+		}
+
+		var which = document.getElementsByTagName('a');
+		for (var i = which.length - 1; i >= 0; i--) {
+			var elem = which[i];
+			if (elem.className == 'explorerPopupArrow cssOnly') {
+				elem.className = 'explorerPopupArrow';
+				elem.onclick = enablePopup;
+			}
+		};
+
+		var things = ['explorerMapWidget1', 'explorerMapWidget2', 'explorerMapWidget3'];
+		for (var i = 1; i <= 3; i++) {
+			var widget = document.getElementById('explorerMapWidget' + i);
+			widget.onclick = disablePopup;
+			widget.onmousedown = enableClicked;
+			widget.onmouseup = disableClicked;
+			//var scroller = document.getElementById('explorerMapScroller' + i);
+			// widget.onmousewheel = nukeWheel;
+			// widget.onwheel = nukeWheel;
+
+			// var explorer = document.getElementById('explorer' + i);
+			// explorer.style.display = 'none';
+
+			var clicker = document.getElementById('worldTeaserLink' + i);
+			clicker.onclick = showTeaser;
+		};
+
+		document.getElementById('pleaseExploreMe').style.display = 'block';
+	}
+	window.addEventListener('load', addScrolls, false);
+	</script>
+</head>
+<body id='featuresPage'>
+
+	<div id='wrapsEverythingForReal'>
+		<header>
+			<a href='/wii/'><img src='img/newerLogo.png' id='logo' alt='Newer Super Mario Bros. Wii logo'></a>
+		</header>
+
+		<div id='mainWrapper'>
+
+			<div id='worlds' class='container_12'>
+				<div class='grid_4'>
+					<h1 id='worldsHeader' style='padding:0'>Newer Worlds</h1>
+				</div>
+				<div class='grid_8' id='pleaseExploreMe' style='display:none'>
+					Click on a world to explore the map.
+				</div>
+				<div class='clear'></div>
+				<div class='standaloneLine'></div>
+
+				<a href='#' class='worldTeaserLink' id='worldTeaserLink1'>
+					<section id='island' class='grid_4 worldTeaser'>
+						<h2>World 1: Yoshi's Island</h2>
+						<img class='mapTeaser' src='img/Map_YITeaser.png' alt="Yoshi's Island map teaser">
+						<p>
+							The beginnings of your <b>Newer</b> adventure take you through a ruined temple, a swamp, various forests and more...! With your friendly dinosaur companion at hand, of course.
+						</p>
+					</section>
+				</a>
+				<a href='#' class='worldTeaserLink' id='worldTeaserLink2'>
+					<section id='desert' class='grid_4 worldTeaser'>
+						<h2>World 2: Rubble Ruins</h2>
+						<img class='mapTeaser' src='img/Map_RRTeaser.png' alt="Rubble Ruins map teaser">
+						<p>
+							After a trek through the Mushroom Kingdom's finest sewer system, you'll arrive bang in the middle of the sweltering desert. Take shelter from <b>Angry Sun</b> and hope for the best!
+						</p>
+					</section>
+				</a>
+				<a href='#' class='worldTeaserLink' id='worldTeaserLink3'>
+					<section id='goldwood' class='grid_4 worldTeaser'>
+						<h2>World A: Goldwood Forest</h2>
+						<img class='mapTeaser' src='img/Map_GWTeaser.png' alt="Goldwood Forest map teaser">
+						<p>
+							The path to this secret world is hidden somewhere among <b>Yoshi's Island</b>... can you find it? There's five secret worlds in all for you to uncover!
+						</p>
+					</section>
+				</a>
+
+				<div class='clear'></div>
+			</div>
+
+			<!-- YOSHI'S ISLAND -->
+
+			<div id='explorer1' class='worldExplorer'>
+				<div class='floatyStuffContainer'>
+					<div class='floatyStuffBG'></div>
+					<div class='floatyStuffCentreBlock'>
+						<span class='pointyArrow' id='pointyArrow1'></span>
+						<h2>World 1: Yoshi's Island</h2>
+						<div class='instructions'>
+							Drag the map around to explore everything.<br>
+							Click or tap on <img src='img/highlight.png' style='width:20px'> to see more about whatever it's pointing to!
+						</div>
+					</div>
+				</div>
+				<div id='explorerMapScroller1'>
+					<div id='explorerMapWidget1'>
+						<!-- YOSHI'S HOUSE -->
+						<div class='explorerPopup epNormal' style='top: 200px; left: 240px'>
+							<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+							<img src='img/levels/YoshiHouse.png'>
+							<h6>Yoshi's House</h6>
+							The home of the Mushroom Kingdom's most famous dinosaur! He's not home, but maybe there's a secret hidden here?
+							<span class='arrow'></span>
+						</div>
+					</div>
+
+					<!-- 1-1 -->
+					<div class='explorerPopup epFlipped' style='top: 400px; left: 240px'>
+						<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+						<img src='img/levels/1_1.png'>
+						<h6>World 1-1: Palm Beach</h6>
+						The start of Mario's adventure. A hilly but peaceful beach with lots of sunshine.
+						<span class='arrow'></span>
+					</div>
+				</div>
+
+				<!-- 1-3 -->
+				<div class='explorerPopup epNormal' style='top: 172px; left: 586px'>
+					<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+					<img src='img/levels/1_3.png'>
+					<h6>World 1-3: Springwater Swamp</h6>
+					A deep, dark and flooded forest with lots of life in its waters. Watch out for Wigglers!
+					<span class='arrow'></span>
+				</div>
+			</div>
+
+			<!-- 1-Tower -->
+			<div class='explorerPopup epFlipped' style='top: 285px; left: 779px'>
+				<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+				<img src='img/levels/1_Tower.png'>
+				<h6>World 1's Tree Tower</h6>
+				A tall tower disguised as a tree. King Fuzzy stands guard at the very top, protected by an army of walking and climbing Koopa Troopas.
+				<span class='arrow'></span>
+			</div>
+		</div>
+
+		<!-- 1-6 -->
+		<div class='explorerPopup epFlipped' style='top: 300px; left: 1125px'>
+			<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+			<img src='img/levels/1_6.png'>
+			<h6>World 1-6: Rainshed Pond</h6>
+			A giant pool of rainwater. Rumours say there's a big secret in it somewhere - can you find it?
+			<span class='arrow'></span>
+		</div>
+	</div>
+
+	<!-- 1-8 -->
+	<div class='explorerPopup epFlipped' style='top: 371px; left: 1277px'>
+		<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+		<img src='img/levels/1_8.png'>
+		<h6>World 1-8: Switch Shift Grove</h6>
+		A switch-filled level where anything and everything can move. Keep an eye out, it'd be easy to hide something here...
+		<span class='arrow'></span>
+	</div>
+</div>
+
+<!-- Shop -->
+<div class='explorerPopup epNormal' style='top: 425px; left: 393px'>
+	<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+	<img src='img/levels/1_Shop.png'>
+	<h6>Shop</h6>
+	Your friendly neighbourhood store where you can exchange spare Star Coins for valuable powerups.
+	<span class='arrow'></span>
+</div>
+</div>
+
+<!-- Challenge House -->
+<div class='explorerPopup epNormal' style='top: 182px; left: 1457px'>
+	<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+	<img src='img/levels/1_Challenge.png'>
+	<h6>Challenge House</h6>
+	A place to test your skills. Come and try your hand at winning some free powerups!
+	<span class='arrow'></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- RUBBLE RUINS -->
+
+<div id='explorer2' class='worldExplorer'>
+	<div class='floatyStuffContainer'>
+		<div class='floatyStuffBG'></div>
+		<div class='floatyStuffCentreBlock'>
+			<span class='pointyArrow' id='pointyArrow2'></span>
+			<h2>World 2: Rubble Ruins</h2>
+			<div class='instructions'>
+				Drag the map around to explore everything.<br>
+				Click or tap on <img src='img/highlight.png' style='width:20px'> to see more about whatever it's pointing to!
+			</div>
+		</div>
+	</div>
+	<div id='explorerMapScroller2'>
+		<div id='explorerMapWidget2'>
+			<!-- SEWERS -->
+			<div class='explorerPopup epNormal' style='top: 493px; left: 219px'>
+				<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+				<img src='img/levels/Sewer.png'>
+				<h6>Soggy Sewers</h6>
+				Anything that Mario still remembers about plumbing will be put to the test in this wet, pipe-laden area!
+				<span class='arrow'></span>
+			</div>
+		</div>
+
+		<!-- 2-8 -->
+		<div class='explorerPopup epNormal' style='top: 460px; left: 406px'>
+			<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+			<img src='img/levels/2_8.png'>
+			<h6>World 2-8: Searing Sands</h6>
+			Watch out! Angry Sun is lurking around this level, following Mario's every move and ready to make his day a bit hotter...
+			<span class='arrow'></span>
+		</div>
+	</div>
+
+	<!-- 2-A -->
+	<div class='explorerPopup epNormal' style='top: 240px; left: 390px'>
+		<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+		<img src='img/levels/2_A.png'>
+		<h6>World 2-A: Fossil Tunnel</h6>
+		A handy hidden shortcut which cuts through a nearby cave and goes straight to the Castle.
+		<span class='arrow'></span>
+	</div>
+</div>
+
+<!-- Music House -->
+<div class='explorerPopup epFlipped' style='top: 398px; left: 720px'>
+	<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+	<img src='img/levels/2_Music.png'>
+	<h6>Music House</h6>
+	Correctly repeat the tune you hear for the chance to win some more vital powerups to help you on your quest!
+	<span class='arrow'></span>
+</div>
+</div>
+
+<!-- 2-Castle -->
+<div class='explorerPopup epRight' style='top: 226px; left: 610px'>
+	<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+	<img src='img/levels/2_Castle.png'>
+	<h6>World 2's Pyramid Castle</h6>
+	A pyramid full of statues of Bowser's minions. Certainly nothing creepy about that. What if they came alive? That couldn't happen.. or could it?
+	<span class='arrow'></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- GOLDWOOD FOREST -->
+
+<div id='explorer3' class='worldExplorer'>
+	<div class='floatyStuffContainer'>
+		<div class='floatyStuffBG'></div>
+		<div class='floatyStuffCentreBlock'>
+			<span class='pointyArrow' id='pointyArrow3'></span>
+			<h2>World A: Goldwood Forest</h2>
+			<div class='instructions'>
+				Drag the map around to explore everything.<br>
+				Click or tap on <img src='img/highlight.png' style='width:20px'> to see more about whatever it's pointing to!
+			</div>
+		</div>
+	</div>
+	<div id='explorerMapScroller3'>
+		<div id='explorerMapWidget3'>
+			<!-- A-1 -->
+			<div class='explorerPopup epRight' style='top: 577px; left: 360px'>
+				<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+				<img src='img/levels/A_1.png'>
+				<h6>World A-1: Autumn Plateau</h6>
+				The entrance to the forest, filled with Wigglers, Bramballs and Monty Moles.
+				<span class='arrow'></span>
+			</div>
+		</div>
+
+		<!-- A-3 -->
+		<div class='explorerPopup epRight' style='top: 363px; left: 620px'>
+			<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+			<img src='img/levels/A_3.png'>
+			<h6>World A-3: Fall Harvest</h6>
+			Move over! Chestnuts are falling, and you certainly don't want to get hit by one. Of course, you might find a prize inside...
+			<span class='arrow'></span>
+		</div>
+	</div>
+
+	<!-- A-A -->
+	<div class='explorerPopup epNormal' style='top: 218px; left: 453px'>
+		<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+		<img src='img/levels/A_A.png'>
+		<h6>World A-A: Goldbuzz Forest</h6>
+		A giant beehive that Bowser has taken over for nefarious purposes. That must be why all the bees have disappeared.
+		<span class='arrow'></span>
+	</div>
+</div>
+
+<!-- A-Fortress -->
+<div class='explorerPopup epNormal' style='top: 182px; left: 610px'>
+	<a href='javascript:void(0)' class='explorerPopupArrow cssOnly' tabindex='1'>&nbsp;</a><div class='explorerPopupWindow'>
+	<img src='img/levels/A_Fortress.png'>
+	<h6>World A's Leafpile Fortress</h6>
+	A fortress that collapsed due to the sheer amount of leaves piled on top of it. Tread carefully!
+	<span class='arrow'></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<footer id='mainFooter'>
+	This website and its content are protected by international copyright law. This website and its content may not be copied, published, distributed, downloaded or otherwise stored, transmitted or converted, in any form or by any means, electronic or otherwise, without the prior written permission of the copyright owner. Mario, Luigi, Yoshi, and all related characters are © Nintendo, and are not under the copyright of this site. All other copyrights are the property of their respective owners.
+</footer>
+</div>
+</div>
+</body>
+</html>

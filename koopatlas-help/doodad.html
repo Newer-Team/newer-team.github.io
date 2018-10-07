@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		
+		<title>Index Page</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="style/styles.css"  />
+		<link rel="stylesheet" type="text/css" media="screen" href="style/red.css" />
+	</head>
+	
+<body>
+<div id="container"><!-- Start container -->
+
+	<div class="top">&nbsp;</div>
+	
+    <div id="pageHeader"><!-- Start page header -->
+        <h1>Koopatlas Help Documentation</h1>
+        <h2>The Newer World Map Engine Editor for NSMBWii</h2>
+    </div><!-- End page header -->
+
+    <div id="navcontainer"><!-- Start Navigation -->
+        <ul>
+            <li><a href="index.html" rel="self" id="current">Index</a></li>
+            <li><a href="start.html" rel="self">Getting Started</a></li>
+            <li><a href="editor.html" rel="self">Editor Window</a></li>
+            <li><a href="exporting.html" rel="self">Exporting</a></li>
+            <li><a href="layers.html" rel="self">Layers</a></li>
+            <li><a href="node.html" rel="self">Nodes</a></li>
+            <li><a href="path.html" rel="self">Paths</a></li>
+            <li><a href="tile.html" rel="self">Tiles</a></li>
+            <li><a href="doodad.html" rel="self">Doodads</a></li>
+            <li><a href="koopuzzle.html" rel="self">Koopuzzle</a></li>
+        </ul>
+    </div><!-- End navigation -->
+	
+	<div id="contentContainer"><!-- Start main content wrapper -->
+		<div id="content"><!-- Start content -->
+
+            <h1><b>Doodads</b></h1>
+                <p>Doodads are images which you can place on the map, in any position, and animate. To add a doodad, click 'Add' from the doodad palette on the left and select your image. The doodad will be saved into your kpmap. Select a doodad from the menu and click Remove to remove it. Note: this is buggy, if you've painted a doodad and remove it when they're still on the map, things can sometimes fuck up. If that doodad has not been painted, or all painted doodads have been deleted (select a doodad and hit backspace/delete), then you're fine. Sometimes you're fine anyway.</p>
+                <p><br></p>
+            
+            <h2><b>Editing doodads</b></h2>
+                <p>Doodads can be painted by selecting a doodad and right clicking on the map. Left click a doodad and drag it to anywhere you like, they do not snap to a grid like tiles. Click on the edges of a doodad to scale the doodad along that axis. Click on a corner to scale along both axis at once. Shift click the edge of a doodad to rotate the doodad.</p>
+                <p><br></p>
+
+            <h2><b>Animation Palette</b></h2>
+                <p>This box will pop up whenever you select a doodad layer, on the bottom of your screen. When a doodad or group of doodads is selected, you may add animations using this window. BUG WARNING: If you select multiple doodads with different animations, they will ALL BE SET TO THE SAME ANIMATION. You will cry. Animations will not be finalized until you deselect a doodad, to prevent issues with animation playback. So if you're wondering why an animation isn't working, make sure you've deselected your doodad/s.</p>
+                <p>Animations are complicated. You can add an animation with the green plus button, and remove an animation with the red minus button. You may also add an animation preset to your doodad with 'Add Preset', or convert the doodad's animation list into a preset with 'New Preset'. Koopatlas comes preloaded with 3 animation presets for your convenience. You can play the animations of all doodads at any time by hitting the 'play' button in the layer palette, or by selecting the play option from the animation menu.</p>
+                <ul>
+                <li>Looping: Sets the looping preferences. Contiguous plays exactly once. Loop plays over and over. Reversible loop plays from start to finish, then from finish to start, and keeps looping like this.</li>
+                <li>Interpolation: Chooses the interpolation method. Linear is flat, Sinusoidial is Slow-Fast-Slow, and Cosinusoidial is Fast-Slow-Fast.</li>
+                <li>Frame Len: Is the length of the animation in Frames, at 60 frames a second.</li>
+                <li>Type: Is the type of animation. You can animate the X or Y position, the X or Y scale, rotate the doodad via Angle, or change it's opacity.</li>
+                <li>Start Value: Is the value at the beginning of the animation for the type. Position values are in pixel (a tile is 16 pixels), angle is in degrees, scale and opacity are in percentage. Scale and opacity can not go lower than 0, opacity can not go higher thann 100, position and angle allow negative values.</li>
+                <li>End Value: Is the value at the end of the animation for the type. See Start Value.</li>
+                <li>Delay: Is the delay in frames between each loop of the animation.</li>
+                <li>Delay Offset: Is the delay in frames before the animation begins. This occurs only once, prior to any animation occuring.</li>
+                </ul>
+                <p><br></p>
+                <p></p>
+            
+            <p><a href="index.html">Back</a></p>
+ 
+			<div class="clearer"></div>
+
+		</div><!-- End content -->
+	</div><!-- End main content wrapper -->
+	
+   <div class="clearer"></div>
+   
+        <div id="footer"><!-- Start Footer -->
+        	<p>&copy; 2009 Treeki, Tempus, etc...</p>
+        </div><!-- End Footer -->
+        
+   <div class="bottom">&nbsp;</div>
+   
+</div><!-- End container -->
+</body>
+</html>
