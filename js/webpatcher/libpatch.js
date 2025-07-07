@@ -23,7 +23,7 @@ if(!Array.prototype.fill)
 /*************/
 
 const IN_WORKER = (typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope);
-const LIB_PATH = '/jscripts/libpatch.js';
+const LIB_PATH = '/js/webpatcher/libpatch.js';
 
 _this.applyPatch = applyPatch;
 _this.applyPatchAsync = applyPatchAsync;
@@ -201,7 +201,7 @@ applyPatchAsync.WORKER_URL = (function()
     }
 
     var WORKER_SOURCE = [
-    'importScripts("https://hack64.net'+LIB_PATH+'", "https://hack64.net/jscripts/lzma.js");',
+    'importScripts("https://newerteam.com'+LIB_PATH+'", "https://newerteam.com/js/webpatcher/lzma.js");',
     '',
     'self.onmessage = function(e)',
     '{',
