@@ -196,11 +196,9 @@ document.getElementById("patch-button").addEventListener("click", () => {
 
         var reader = new FileReader();
         reader.onload = async () => {
-
-            var romdv = new DataView(reader.result);         
-            var sourceData = romdv.buffer;
-            
-            var checksum = calcChecksum(sourceData);
+       
+            var sourceData = reader.result;
+            var checksum = calcChecksum(reader.result);
 
             var patchPath = patches[checksum];
             if (!patchPath)
@@ -208,14 +206,23 @@ document.getElementById("patch-button").addEventListener("click", () => {
                 alert("Unknown file. Please ensure you selected a valid New Super Mario Bros. ROM.");
                 return;
             }
+                     
       
             patchButton.textContent = "Patching...";
             patchButton.disabled = true;
 
-            var patchRes = await fetch(patchPath);
-            if (!patchRes.ok) throw new Error(`HTTP ${patchRes.status}: ${patchRes.statusText}`);
-            var patchData = await patchRes.arrayBuffer();
-   
+           
+            try 
+            {
+                const patchRes = await fetch(patchPath);
+                if (!patchRes.ok) throw new Error(`Response status: ${patchRes.status}`);
+                var patchData = await patchRes.arrayBuffer();
+            } 
+            catch (error) 
+            {
+                console.error(error.message);
+            }               
+            
             applyPatchAsync(sourceData, patchData, {
                 onpatchend: (targetData) => {
                     var ext = file.name.split('.').pop();
