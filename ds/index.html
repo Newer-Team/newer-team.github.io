@@ -196,7 +196,10 @@ document.getElementById("patch-button").addEventListener("click", () => {
 
         var reader = new FileReader();
         reader.onload = async () => {
-            var sourceData = reader.result;
+
+            var romdv = new DataView(reader.result);         
+            var sourceData = romdv.buffer;
+            
             var checksum = calcChecksum(sourceData);
 
             var patchPath = patches[checksum];
