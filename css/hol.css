@@ -90,6 +90,25 @@ header{
     -webkit-filter:drop-shadow(4px 4px 2px #222);
     filter:drop-shadow(4px 4px 2px #222)
 }
+#lang{
+	position:fixed;
+	top:10px;
+	right:10px;
+    -webkit-filter:drop-shadow(2px 2px 1px #222);
+    filter:drop-shadow(2px 2px 1px #222)
+}
+#lang img {
+    width:48px;
+	height:48px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    margin-left:12px;
+}
+#lang img:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+}
 #leftNav,#rightNav{
     position:absolute;
     top:18px
