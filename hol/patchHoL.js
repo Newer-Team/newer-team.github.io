@@ -14,7 +14,12 @@ var locStrings = {
 		UNKFILE: "Fichier inconnu. Assurez-vous d'avoir fourni une ROM N64 valide d'Ocarina of Time ou un fichier WAD de la Console Virtuelle Wii valide.",
 		PATCHING: "Patch en cours...",
 		PATCHROM: "Patcher une ROM"
-	}
+	},
+    kr: {
+        UNKFILE: "알 수 없는 파일입니다. 올바른 시간의 오카리나 N64 롬 파일 또는 Wii 버추얼 콘솔 WAD 파일을 선택했는지 다시 확인해 주십시오.",
+        PATCHING: "패치 중...",
+        PATCHROM: "롬 파일 패치하기"
+    }
 };
 
 function loc(id)
