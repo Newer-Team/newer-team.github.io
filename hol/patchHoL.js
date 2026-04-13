@@ -1,4 +1,4 @@
-var currentRelease = "1.10";
+var currentRelease = "1.20";
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("current-release").textContent = currentRelease;
