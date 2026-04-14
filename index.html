@@ -1,57 +1,68 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>Newer Team</title>
 	<meta name="description" content="Home of Newer Super Mario Bros. DS and Newer Super Mario Bros. Wii.">
-	<meta name="viewport" content="width=980, user-scalable=yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/png" href="favicon.png">
-	<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,700' rel='stylesheet' type='text/css'>
-
-	<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'> 
-	<link rel="stylesheet" href="css/normalize.min.css">
-	<link rel="stylesheet" href="css/960.css">
-	<link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href="css/lightbox.css">
-
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titillium+Web:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
-
-<style> 
-body {
-    background-image: url("wii/img/NSMBWstripe.png");
-    background-repeat: repeat-y;
-	background-size: cover;
-    background-position: center center;
-}
-</style>
 <body>
 
-	<h2 style="font-family:Titillium Web; text-align: center;">Choose your adventure...</h2>
-	<table align="center">
-		<tr>
-			<td style="padding-right: 140px; border-right: thin solid #000000; text-align:center">
-				<a href="wii/"><img src="wii/img/newerLogo.png" height="180px"></a>
-                <br>
-				<a href="ds/"><img src="ds/img/newerLogo.png" height="180px"></a>
-				<br>
-                <a href="wiidx/"><img src="wiidx/img/ndx.png" height="180px"></a>
-                <a href='wii/specials.html' class='redButton bigButton' style="margin-left:auto;margin-right:auto;margin-top:40px;display:block;width:10em">Specials</a>
-			</td>
-			<td style="padding-left: 100px; text-align:center">
-                <a href="hol/"><img src="hol/img/logo.png" height="350px" style="padding-top:20px;"></a>
-                <br>
-                <a href="64ds/"><img src="64ds/Logo.png" height="180px" style="padding-top:20px;"></a>
-				<br>
-                <a href="dojoex/"><img src="dojoex/Logo.png" height="100px" style="padding-top:20px;"></a>
-			</td>
-		</tr>
-	</table>
+<header class="site-header">
+	<p class="eyebrow">Choose your adventure...</p>
+</header>
 
-	
-	
-	
-<div style="width: 60%; font-family:Titillium Web; text-align: center; margin-left: auto; margin-right: auto; margin-top: 100px;">
-This website and its content are protected by international copyright law. This website and its content may not be copied, published, distributed, downloaded or otherwise stored, transmitted or converted, in any form or by any means, electronic or otherwise, without the prior written permission of the copyright owner. Mario, Luigi, Yoshi, and all related characters are © Nintendo, and are not under the copyright of this site. All other copyrights are the property of their respective owners.
-</div>
+<main class="panels">
+
+	<a href="wii/" class="panel panel--wii">
+		<div class="glow"></div>
+		<img src="wii/img/newerLogo.png" alt="Newer Super Mario Bros. Wii">
+		<span class="label">Newer Super Mario Bros. Wii</span>
+	</a>
+
+	<a href="hol/" class="panel panel--hol">
+		<div class="glow"></div>
+		<img src="hol/img/logo.png" alt="Hero of Law">
+		<span class="label">Hero of Law</span>
+	</a>
+
+	<a href="ds/" class="panel panel--ds">
+		<div class="glow"></div>
+		<img src="ds/img/newerLogo.png" alt="Newer Super Mario Bros. DS">
+		<span class="label">Newer Super Mario Bros. DS</span>
+	</a>
+
+	<a href="wiidx/" class="panel panel--wiidx panel--small">
+		<div class="glow"></div>
+		<img src="wiidx/img/ndx.png" alt="Newer DX">
+		<span class="label">Newer Super Mario Bros. Wii DX</span>
+	</a>
+
+	<a href="dojoex/" class="panel panel--dojo panel--small">
+		<div class="glow"></div>
+		<img src="dojoex/Logo.png" alt="Dojo EX">
+		<span class="label">Deltarune Dojo EX</span>
+	</a>
+
+	<a href="64ds/" class="panel panel--64ds panel--small">
+		<div class="glow"></div>
+		<img src="64ds/Logo.png" alt="Super Mario 64 DS">
+		<span class="label">Another Super Mario 3D</span>
+	</a>
+
+
+	<div class="specials-wrap">
+		<a href="wii/specials.html" class="specials-btn">Specials</a>
+	</div>
+
+</main>
+
+<footer class="copyright">
+	This website and its content are protected by international copyright law and may not be copied, published, or distributed without prior written permission. Mario, Luigi, Yoshi, and all related characters are © Nintendo. All other copyrights are the property of their respective owners.
+</footer>
+
 </body>
 </html>
