@@ -18,6 +18,7 @@
 	<script src="../js/vendor/modernizr-2.6.2.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="../js/lightbox.js"></script>
+    <script src="../js/webpatcher/libpatch.js"></script>    
 </head>
 <body id='homepage'>
 	<div>
@@ -38,9 +39,11 @@
 
 				<section id='downloadSection' class='grid_12'>
 					<h2>Download Another Super Mario 3D!</h2>
-					<h3>Current release: <b>1.09</b><br></h3>
-					<a href='https://mega.nz/file/2v4GAT6b#Y5lK4rOw_FBeuWRAG11lKmg8zLS6-NMj9REhU8oJ3IA' class='blueButton'>Download</a>
-
+                    <button id='patch-button' class='blueButton'>Patch ROM</button>
+                    
+                    <br><small>Powered by shygoo's <a target='_blank' href='https://github.com/shygoo/webpatcher'>Web Patcher</a></small><br><br>      
+                    
+                    <small><h4>For offline use, or to acquire older versions, you can also download the patches <a href="https://mega.nz/file/2v4GAT6b#Y5lK4rOw_FBeuWRAG11lKmg8zLS6-NMj9REhU8oJ3IA">directly</a>.</h4></small>                        
 					<div class="downloadNote">
 						This game is best played on a real console &mdash; you're downloading patches and a patching program for <i>Super Mario 64 DS.</i> No files from the original game are being distributed.
 					</div>
@@ -93,5 +96,131 @@
 			</footer>
 		</div>
 	</div>
+    
+    <script>
+var patches = {
+    // adler32 checksums
+    0x854161AB: "patches/ASMP01.xdelta",
+    0xBB6B2EC2: "patches/ASME01_1.0.xdelta",
+    0x622AF1C1: "patches/ASME01_1.1.xdelta",
+};
+var patchButton = document.getElementById("patch-button");
+
+// adler32 function subject to MIT license at
+// https://newerteam.com/js/webpatcher/LICENSE.md
+// Copyright (c) 2024 shygoo
+function adler32(arr, offs, size)
+{
+    var a = 1, b = 0;
+
+    for(var i = 0; i < size; i++)
+    {
+        a = (a + arr[offs + i]) % 65521;
+        b = (b + a) % 65521;
+    }
+
+    return ((b << 16) | a) >>> 0;
+}
+
+function calcChecksum(arrayBuffer)
+{
+    var arr = new Uint8Array(arrayBuffer);
+    return adler32(arr, 0, arr.length);
+}
+
+document.getElementById("patch-button").addEventListener("click", () => {
+    var input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".nds,.srl";
+    input.onchange = () => {
+        var file = input.files[0];
+        if (!file) return;
+
+        var reader = new FileReader();
+        reader.onload = async () => {
+       
+            var sourceData = reader.result;
+            var checksum = calcChecksum(reader.result);
+
+            var patchPath = patches[checksum];
+            if (!patchPath)
+            {
+                alert("Unknown file. Please ensure you selected a valid New Super Mario Bros. ROM.");
+                return;
+            }
+                     
+      
+            patchButton.textContent = "Patching...";
+            patchButton.disabled = true;
+
+           
+            try 
+            {
+                const patchRes = await fetch(patchPath);
+                if (!patchRes.ok) throw new Error(`Response status: ${patchRes.status}`);
+                var patchData = await patchRes.arrayBuffer();
+            } 
+            catch (error) 
+            {
+                console.error(error.message);
+            }               
+            
+            applyPatchAsync(sourceData, patchData, {
+                onpatchend: (targetData) => {
+                    var ext = file.name.split('.').pop();
+                    var outName = "Another Super Mario 3D." + ext;
+                    saveAs(outName, targetData);
+                    
+                    patchButton.textContent = "Patch ROM";
+                    patchButton.disabled = false;
+                },
+                
+                onerror: (message) => alert("Error: " + message + "\n\n" + "See console output for more information."),
+            });
+        };
+
+        reader.readAsArrayBuffer(file);
+    };
+    input.click();
+});
+
+// saveAs function subject to MIT license at
+// https://newerteam.com/js/webpatcher/LICENSE.md
+// Copyright (c) 2024 shygoo
+function saveAs(filename, data)
+{
+    console.log('saving ' + filename + '...')
+
+    var blob = new Blob([data], {type: 'octet/stream'});
+    var url = window.URL.createObjectURL(blob);
+
+    if(navigator && navigator.msSaveBlob)
+    {
+        console.log("using msSaveBlob...");
+        navigator.msSaveBlob(blob, filename);
+    }
+    else
+    {
+        var a = document.createElement('a');
+        a.style = "display: none";
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        try
+        {
+            a.click();
+        }
+        catch(e)
+        {
+            console.error(e);
+            console.log('failed to save file');
+        }
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    }
+}
+    </script>        
+    
+    
 </body>
 </html>
