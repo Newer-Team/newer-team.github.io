@@ -130,12 +130,12 @@ body {
 .panel--small img { max-width: 75%; height: 100px;}
 
 .panel:hover {
-	transform: translateY(-3px) scale(1.015);
+	transform: translateY(-3px) scale(1.065);
 	border-color: var(--accent, rgba(0,0,0,0.15));
 	box-shadow:
 		0 0 0 1px var(--accent, rgba(0,0,0,0.15)),
 		0 8px 40px rgba(0,0,0,0.15),
-		0 0 30px -10px var(--accent, transparent);
+		0 0 40px -10px var(--accent, transparent);
 }
 
 .panel:hover .glow  { opacity: 0.06; }
