@@ -1,0 +1,174 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+	--glow-red:    #ff3a3a;
+	--glow-blue:   #1a70d9;
+	--glow-gold:   #faa525;
+	--glow-green:  #2f8c04;
+	--glow-purple: #c03aff;
+	--glow-pink:   #ff3aaa;
+	--bg: #FFFFFF;
+	--card-bg: #f5f5f5;
+	--border: rgba(0,0,0,0.07);
+	--text: #e8e8f0;
+	--muted: rgba(0,0,0,0.65);
+}
+
+body {
+	background-color: var(--bg);
+	background-image:
+		radial-gradient(ellipse 80% 50% at 20% -10%, rgba(255,58,58,0.08) 0%, transparent 60%),
+		radial-gradient(ellipse 60% 40% at 80% 110%, rgba(58,180,255,0.07) 0%, transparent 60%),
+		url("/wii/img/NSMBWstripe.png");
+	background-repeat: no-repeat, no-repeat, repeat-y;
+	background-size: cover, cover, auto;
+	background-position: center, center, center;
+	min-height: 100vh;
+	font-family: 'Titillium Web', sans-serif;
+	color: var(--text);
+}
+
+.site-header {
+	text-align: center;
+	padding: 56px 24px 32px;
+}
+
+.site-header .eyebrow {
+	font-size: 21px;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	color: var(--muted);
+	margin-bottom: 12px;
+}
+
+.site-header h1 {
+	font-family: 'Titillium Web', sans-serif;
+	font-size: clamp(26px, 7vw, 72px);
+	letter-spacing: 0.08em;
+	line-height: 1;
+	background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,0.5));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.panels {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 20px 20px;
+}
+
+.panel--tall { grid-row: span 2; }
+
+.panel {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 26px;
+	padding: 20px 20px;
+	background: var(--card-bg);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	text-decoration: none;
+	color: var(--text);
+	overflow: hidden;
+	transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+	cursor: pointer;
+}
+
+.panel::before,
+.panel::after {
+	content: '';
+	position: absolute;
+	width: 28px;
+	height: 28px;
+	border-color: var(--accent, rgba(255,255,255,0.25));
+	border-style: solid;
+	transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+}
+.panel::before { top: 8px; left: 8px; border-width: 1px 0 0 1px; border-radius: 3px 0 0 0; }
+.panel::after  { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; border-radius: 0 0 3px 0; }
+
+.panel .glow {
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	background: radial-gradient(ellipse 80% 70% at 50% 50%, var(--accent, white), transparent 70%);
+	pointer-events: none;
+}
+
+.panel .label {
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 10px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--muted);
+	transition: color 0.25s ease;
+	position: relative;
+	z-index: 1;
+}
+
+.panel img {
+	display: block;
+	max-width: 100%;
+	height: 200px;
+	max-height: 170px;
+	object-fit: contain;
+	position: relative;
+	z-index: 1;
+	transition: transform 0.3s ease, filter 0.3s ease;
+	filter: brightness(0.92) saturate(0.92);
+}
+
+.panel--small img { max-width: 75%; height: 100px;}
+
+.panel:hover {
+	transform: translateY(-3px) scale(1.065);
+	border-color: var(--accent, rgba(0,0,0,0.15));
+	box-shadow:
+		0 0 0 1px var(--accent, rgba(0,0,0,0.15)),
+		0 8px 40px rgba(0,0,0,0.15),
+		0 0 40px -10px var(--accent, transparent);
+}
+
+.panel:hover .glow  { opacity: 0.06; }
+.panel:hover img    { transform: scale(1.04); filter: brightness(1) saturate(1.1); }
+.panel:hover .label { color: var(--accent, var(--text)); }
+.panel:hover::before,
+.panel:hover::after { width: 28px; height: 28px; }
+
+.panel--wii   { --accent: var(--glow-red); }
+.panel--ds    { --accent: var(--glow-green); }
+.panel--wiidx { --accent: var(--glow-gold); }
+.panel--hol   { --accent: var(--glow-blue); }
+.panel--64ds  { --accent: var(--glow-purple); }
+.panel--dojo  { --accent: var(--glow-pink); }
+
+.copyright {
+	text-align: center;
+	max-width: 640px;
+	margin: 24px auto 48px;
+	padding: 24px 24px 0;
+	font-size: 11px;
+	line-height: 1.7;
+	color: var(--muted);
+	border-top: 1px solid var(--border);
+}
+
+@media (max-width: 680px) {
+	.panels {
+		grid-template-columns: 1fr 1fr;
+		gap: 12px;
+		padding: 0 12px 12px;
+	}
+	.panel img        { max-height: 100px; }
+	.site-header      { padding: 36px 16px 24px; }
+}
+
